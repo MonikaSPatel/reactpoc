@@ -51,6 +51,7 @@ display:inline-block;
 background: ${props => props.isSelected ? "palevioletred" : "white"};
 color: ${props => props.isSelected ? "white" : "palevioletred"};
 font-size: 1em;
+text-align: center;
 width:200px;
 padding: 0.25em 1em;
 border: 2px solid #ead7ea;
