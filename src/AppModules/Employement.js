@@ -41,7 +41,7 @@ const Employement = props => {
                 </div>
                 <div>
                     <Lable>Language known</Lable>
-                    <CheckboxGroup name="language" options={languages} component={renderCheckbox} />
+                    <CheckboxGroup name="language"  validate={[required]} options={languages} component={renderCheckbox} />
 
                 </div>
 

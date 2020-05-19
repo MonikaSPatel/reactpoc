@@ -15,6 +15,7 @@ export const Input = styled.input.attrs(props => ({
 
 export const InlineDiv = styled.div`
 display:inline-block;
+size: ${props => props.size};
 `;
 export const Column = styled.div`
 display:block;

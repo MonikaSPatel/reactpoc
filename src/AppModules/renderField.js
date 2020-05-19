@@ -1,5 +1,12 @@
 import React from 'react';
 import { Input, Lable, Select, InlineDiv, Error } from './FormElement';
+import DateTimePicker from 'react-widgets/lib/DateTimePicker'
+import moment from 'moment'
+import 'react-widgets/dist/css/react-widgets.css'
+
+import momentLocaliser from 'react-widgets-moment-localizer'
+
+momentLocaliser(moment)
 
 export const renderField = ({
     input,
@@ -51,3 +58,14 @@ export const renderCheckbox = ({ input, label, id, meta: { touched, error, warni
                 (warning && <span>{warning}</span>))}
     </InlineDiv>
 )
+
+export const renderDateTimePicker = ({ input: { onChange, value }, showTime }) =>
+    <InlineDiv size="1em">
+        <DateTimePicker
+            dropUp
+            onChange={onChange}
+            time={showTime}
+            format="DD MMM YYYY"
+            value={!value ? null : new Date(value)}
+        />
+    </InlineDiv>

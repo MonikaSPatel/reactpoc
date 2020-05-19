@@ -2,7 +2,7 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { Lable, Button,BodySection } from './FormElement';
 import { required, maxLength15, minLength2,number ,phoneNumber,email} from './Validations';
-import { renderField, renderRadio } from './renderField';
+import { renderField, renderRadio,renderDateTimePicker } from './renderField';
 
 const Personal = props => {
     const { handleSubmit } = props
@@ -48,6 +48,14 @@ const Personal = props => {
                 <Field name="sex" component={renderRadio} type="radio" value="Other" />{' '}Other
     
             </div>
+            <div>
+                <Lable>Date Of Birth</Lable>
+                    <Field
+                        name="date_of_birth"
+                        component={renderDateTimePicker}
+                        showTime={false}
+                    />
+                </div>
             <div>
                     <Field
                         label="Contact No"
