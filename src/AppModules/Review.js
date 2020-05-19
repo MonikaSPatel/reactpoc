@@ -34,7 +34,7 @@ let Review = props => {
                 <div><Lable size="0.5em">Designation:</Lable><Span>{designation}</Span></div>
                 <div><Lable size="0.5em">Language:</Lable><Span>{language}</Span></div>
                 <div>
-                    <Button type="button" primary  onClick={previousPage}>
+                    <Button type="button" primary onClick={previousPage}>
                         Previous
         </Button>
 
@@ -57,7 +57,7 @@ Review = reduxForm({
 
 const selector = formValueSelector('user') // <-- same as form name
 Review = connect(state => {
-    const { firstName, lastName, sex, email, employee_id, department, designation,language,contact_no } = selector(state, 'firstName', 'lastName', 'sex', 'email', 'employee_id', 'department', 'designation','language','contact_no')
+    const { firstName, lastName, sex, email, employee_id, department, designation, language, contact_no } = selector(state, 'firstName', 'lastName', 'sex', 'email', 'employee_id', 'department', 'designation', 'language', 'contact_no')
     return {
         fullName: `${firstName || ''} ${lastName || ''}`,
         sex,
@@ -66,7 +66,7 @@ Review = connect(state => {
         department,
         designation,
         contact_no,
-        language:language.toString()
+        language: `${(language) ? language.toString() : ''}`
     }
 })(Review)
 
