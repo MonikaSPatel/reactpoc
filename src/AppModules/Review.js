@@ -2,6 +2,7 @@ import React from 'react';
 import { reduxForm, formValueSelector } from 'redux-form';
 import { connect } from 'react-redux';
 import { Button, BodySection, Lable, Span } from './FormElement';
+import moment from 'moment';
 
 const saveData = (values) => {
     console.log(values);
@@ -17,6 +18,7 @@ let Review = props => {
         designation,
         language,
         contact_no,
+        date_of_birth,
         handleSubmit,
         pristine,
         submitting,
@@ -29,6 +31,7 @@ let Review = props => {
                 <div><Lable size="0.5em">Email:</Lable><Span>{email}</Span></div>
                 <div><Lable size="0.5em">Sex:</Lable><Span>{sex}</Span></div>
                 <div><Lable size="0.5em">Contact No:</Lable><Span>{contact_no}</Span></div>
+                <div><Lable size="0.5em">Date Of Birth:</Lable><Span>{date_of_birth}</Span></div>
                 <div><Lable size="0.5em">Employee Id:</Lable><Span>{employee_id}</Span></div>
                 <div><Lable size="0.5em">Department:</Lable><Span>{department}</Span></div>
                 <div><Lable size="0.5em">Designation:</Lable><Span>{designation}</Span></div>
@@ -57,7 +60,7 @@ Review = reduxForm({
 
 const selector = formValueSelector('user') // <-- same as form name
 Review = connect(state => {
-    const { firstName, lastName, sex, email, employee_id, department, designation, language, contact_no } = selector(state, 'firstName', 'lastName', 'sex', 'email', 'employee_id', 'department', 'designation', 'language', 'contact_no')
+    const { firstName, lastName, sex, email, employee_id, department, designation, language, contact_no, date_of_birth } = selector(state, 'firstName', 'lastName', 'sex', 'email', 'employee_id', 'department', 'designation', 'language', 'contact_no', 'date_of_birth')
     return {
         fullName: `${firstName || ''} ${lastName || ''}`,
         sex,
@@ -66,7 +69,8 @@ Review = connect(state => {
         department,
         designation,
         contact_no,
-        language: `${(language) ? language.toString() : ''}`
+        language: `${(language) ? language.toString() : ''}`,
+        date_of_birth: `${(date_of_birth) ? moment(date_of_birth).format('DD-MM-YYYY') : '-'}`
     }
 })(Review)
 
